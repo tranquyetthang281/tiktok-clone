@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 function App() {
+  const [todo, setTodo] = useState('')
+  const [todoList, setTodoList] = useState([])
+
+  const addTodoList = () => {
+    setTodoList(prev => [...prev, todo])
+    setTodo('')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ padding: 32 }}>
+      <input
+        value={todo} 
+        onChange={e => setTodo(e.target.value)}/>
+      <button onClick={addTodoList}>Add</button>
+      <ul>
+        {todoList.map((i, index) => (
+          <li key={index}>{i}</li>
+        ))}
+      </ul>
     </div>
   );
 }
