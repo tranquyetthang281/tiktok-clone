@@ -1,4 +1,3 @@
-
 const plugins = [
     [
         require.resolve('babel-plugin-module-resolver'),
@@ -7,7 +6,5 @@ const plugins = [
                 "~": "./src"
             }
         }
-
     ]
-
 ];
